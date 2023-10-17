@@ -1,0 +1,61 @@
+﻿@model company.BL.Model.VacationVM
+
+
+@{
+    ViewBag.Title = "Edit Vaction";
+    // var x = emplo.GetAll();
+}
+<div class="card">
+    <div class="card-body">
+        @*         <h5 class="card-title">Floating labels Form</h5>
+        *@
+        <br />
+
+
+        <form class="" id="form_validation" asp-controller="vacation" asp-action="Edit" method="post">
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" asp-for="vacationName" id="vacationName" placeholder="Vacation Name">
+                        <label for="vacationName">Vacation Name </label>
+                    </div>
+                    <span asp-validation-for="vacationName" class="text-danger "></span>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" asp-for="vacationCost" id="vacationCost" placeholder=" vacation Cost ">
+                        <label for="vacationCost"> vacation Cost </label>
+                    </div>
+                    <span asp-validation-for="vacationCost" class="text-danger "></span>
+
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary waves-effect" type="submit">Edit</button>
+            <a asp-controller="vacation" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+        </form>
+    </div>
+</div>
+@section MicrosoftValidation{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="vacation" asp-action="index">Vacation </a></li>
+        <li class="breadcrumb-item"> <a>Edit Vacation </a></li>
+
+    </ol>
+}
+
+

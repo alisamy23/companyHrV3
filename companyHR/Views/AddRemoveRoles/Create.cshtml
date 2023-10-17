@@ -1,0 +1,86 @@
+﻿@using company.DAL.Extend;
+@inject RoleManager<ApplictionRoles> roles;
+@inject UserManager<ApplicationUser> users;
+@model company.BL.Model.UsersRolesVm
+
+@{
+    ViewBag.Title = "Add User role";
+}
+<div class="card">
+    <div class="card-body">
+       <div asp-validation-summary="All" class="text-danger" ></div> 
+ <br />
+
+
+        <form class="" id="form_validation" asp-controller="AddRemoveRoles" asp-action="create" method="post">
+                              
+            <div class="row g-3 mb-3">
+
+                <div class="col-md-6">
+                    <div class="form-floating ">
+
+                        <select asp-for="UserId" class="form-select" id="UserId" aria-label="UserId">
+                            <option value="">-- Please select user  --</option>
+                            @{
+                                foreach (var item in users.Users)
+                                {
+                                    <option value=@item.Id>@item.UserName</option>
+
+                                }
+                            }
+
+                        </select>
+                        <label for="UserId">User Name</label>
+                    </div>
+                    <span asp-validation-for="UserId" class="text-danger "></span>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating ">
+
+                        <select asp-for="RoleName" class="form-select" id="vacationId" aria-label="RoleName">
+                            <option value="">-- Please select role  --</option>
+                            @{
+                                foreach (var item in roles.Roles)
+                                {
+                                    <option value=@item.Name>@item.Name</option>
+                                }
+                            }
+
+                        </select>
+                        <label for="RoleName">Role Name</label>
+                    </div>
+                    <span asp-validation-for="RoleName" class="text-danger "></span>
+                </div>
+
+                </div>
+                      
+                    <button class="btn btn-primary waves-effect" type="submit">Create</button>
+                    <button class="btn btn-primary waves-effect" type="reset">Cancel</button>
+            <a asp-controller="AddRemoveRoles" asp-action="index" class="btn btn-success">Back</a>
+
+
+              
+              
+  </form>
+</div>
+</div>
+@section MicrosoftValidation{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+   
+    }
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="AddRemoveRoles" asp-action="index"> Users Roles </a></li>
+        <li class="breadcrumb-item"> <a>Add User Role</a></li>
+
+    </ol>
+}
+
+
+
+
+
+

@@ -1,0 +1,129 @@
+﻿@model company.BL.Model.EmployeesVacationVM
+
+@{
+    ViewBag.Title = "Employee Vacation Details";
+    // var x = emplo.GetAll();
+}
+<div class="card">
+    <div class="card-body">
+
+        <br />
+
+
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating ">
+                        <select asp-for="employeeId" class="form-select readOnly" id="employeeId" aria-label="employeeId">
+                            <option value="">-- Please select Employee  --</option>
+
+                        </select>
+                        <label for="employeeId">Employee</label>
+                    </div>
+                    <span asp-validation-for="employeeId" class="text-danger "></span>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating ">
+                        <select asp-for="vacationId" class="form-select readOnly" id="vacationId" aria-label="vacationId">
+                            <option value="">-- Please select Vacation  --</option>
+
+                        </select>
+                        <label for="vacationId">Bonus</label>
+                    </div>
+                    <span asp-validation-for="vacationId" class="text-danger "></span>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control readOnly" asp-for="fromDate" id="fromDate" placeholder="From Date ">
+                        <label for="fromDate">From Date   </label>
+                    </div>
+                    <span asp-validation-for="fromDate" class="text-danger "></span>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control readOnly" asp-for="toDate" id="fromDate" placeholder="To Date ">
+                        <label for="toDate">To Date   </label>
+                    </div>
+                    <span asp-validation-for="toDate" class="text-danger "></span>
+
+                </div>
+
+            </div>
+
+            <a asp-controller="EmployeesVacation" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+    </div>
+</div>
+@section MicrosoftValidation{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+
+        $(function () {
+
+            $("#employeeId").empty();
+            $("#employeeId").append("<option value='0'>Choose Employee</option>");
+            $.ajax({
+                type: "POST",
+                url: "/Employees/getAllEmployee",
+                data: {},
+                success: function (res) {
+                    console.log(res);
+                    $.each(res, function (i, e) {
+                        $("#employeeId").append("<option value='" + e.id + "'>" + e.employeeName + "</option>");
+                    });
+                    $("#employeeId").val(@Model.employeeId);
+
+                }
+            });
+
+
+
+
+            $("#vacationId").empty();
+            $("#vacationId").append("<option value='0'>Choose Vacation</option>");
+            $.ajax({
+                type: "POST",
+                url: "/Vacation/getAllVacation",
+                data: {},
+                success: function (res) {
+                    console.log(res);
+                    $.each(res, function (i, e) {
+                        $("#vacationId").append("<option value='" + e.id + "'>" + e.vacationName + "</option>");
+                    });
+                    $("#vacationId").val(@Model.vacationId);
+
+                }
+            });
+
+
+        });
+
+        $(document).ready(function () {
+            $(document).ready(() => {
+            });
+        });
+
+    </script>
+    }
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="EmployeesVacation" asp-action="index">Employee Vaction </a></li>
+        <li class="breadcrumb-item"> <a> Employee Vaction Details</a></li>
+
+    </ol>
+}
+
+
+
+
+
+

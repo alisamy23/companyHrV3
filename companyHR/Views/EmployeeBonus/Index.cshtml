@@ -1,0 +1,98 @@
+﻿    
+@model IEnumerable<company.BL.Model.EmployeeBounsVM>
+
+
+@{
+    ViewBag.Title = "Employee Bonus";
+}
+
+<!-- Exportable Table -->
+<section class="section">
+    <div class="row justify-content-end ">
+        <div class="col-2 text-end">
+            <a class="btn btn-primary" asp-controller="EmployeeBonus" asp-action="Create">Create</a>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="datatable-container">
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable   ">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Employee Name</th>
+                                <th scope="col"> bonusName</th>
+                                <th scope="col">bonusValue</th>
+                                <th scope="col"> Bonus/Deduction</th>
+                                <th scope="col">bonusDate</th>
+                                <th scope="col">DETAILS</th>
+                                <th scope="col">EDIT</th>
+                                <th scope="col">Delete</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                    string classColor = item.bonus.Bonusflag == false ? "text-danger" : "";
+@*                                 <div>@style</div>
+ *@
+                                <tr  >
+                                        <td> <span class="@classColor">@item.id</span> </td>
+                                    <td><span class="@classColor" >@item.employee.employeeName</span></td>
+                                    <td><span class="@classColor">@item.bonus.bonusName</span></td>
+                                    <td><span class="@classColor">@item.bonus.bonusValue</span></td>
+                                    @{
+                                        if (@item.bonus.Bonusflag == true)
+                                        {
+                                            <td>Bonus</td>
+                                        }
+                                        else
+                                        {
+                                                <td> <span class="@classColor">Deduction</span></td>
+                                        }
+                                    }
+                                        <td><span class="@classColor">@item.date</span></td>
+
+
+                                    <td><a asp-controller="EmployeeBonus" asp-action="details" asp-route-id="@item.id" class="btn btn-info">Details</a></td>
+                                    <td><a asp-controller="EmployeeBonus" asp-action="edit" asp-route-id="@item.id" class="btn btn-warning">Edit</a></td>
+                                    <td><a asp-controller="EmployeeBonus" asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Delete</a></td>
+
+                                </tr>
+                            }
+
+                    </table>
+                    <!-- End Table with stripped rows -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #END# Exportable Table -->
+<!-- Jquery DataTable Plugin Js -->
+ 
+@section DataTabelScripts {
+       
+
+
+}
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="EmployeeBonus" asp-action="index">Employee Bonus </a></li>
+    </ol>
+}
+
+
+
+
+
+

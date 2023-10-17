@@ -1,0 +1,74 @@
+﻿@model IEnumerable<company.BL.Model.EmployeeVM>
+@{
+    ViewBag.Title = "Employees";
+}
+
+<!-- Exportable Table -->
+<section class="section">
+    <div class="row justify-content-end ">
+        <div class="col-2 text-end">
+            <a class="btn btn-primary" asp-controller="Employees" asp-action="Create">Create</a>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable  table-striped  ">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Employee Name</th>
+                                <th scope="col">Department Name</th>
+                                <th scope="col">Job Name</th>
+                                <th scope="col">Details</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td> @item.id</td>
+                                    <td>@item.employeeName</td>
+                                    <td>@item.deprtment.Name</td>
+                                    <td>@item.job.jobName</td>
+                                    <td><a asp-controller="Employees" asp-action="details" asp-route-id="@item.id" class="btn btn-info">Details</a></td>
+                                    <td><a asp-controller="Employees" asp-action="edit" asp-route-id="@item.id" class="btn btn-warning">Edit</a></td>
+                                    <td><a asp-controller="Employees" asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #END# Exportable Table -->
+<!-- Jquery DataTable Plugin Js -->
+ 
+@section DataTabelScripts {
+       
+
+
+}
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Employees" asp-action="index">Employees </a></li>
+    </ol>
+}
+
+
+

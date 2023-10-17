@@ -1,0 +1,43 @@
+﻿@model company.BL.Model.DepartmentVM
+
+
+@{
+    ViewBag.Title = "Department Details ";
+    // var x = emplo.GetAll();
+}
+<div class="card">
+    <div class="card-body">
+        @*         <h5 class="card-title">Floating labels Form</h5>
+        *@
+        <br />
+
+
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control readOnly" asp-for="Name" id="DepartmentName" placeholder="Department Name">
+                        <label for="DepartmentName">Department Name </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a asp-controller="Department" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+    </div>
+</div>
+
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Department" asp-action="index">Department </a></li>
+        <li class="breadcrumb-item"> <a> Department Details </a></li>
+
+    </ol>
+}

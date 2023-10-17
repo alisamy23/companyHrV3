@@ -1,0 +1,62 @@
+﻿@model company.BL.Model.ApplicationUserVm
+@{
+    ViewBag.Title = " User Details";
+    // var x = emplo.GetAll();
+}
+
+<div class="card">
+    <div class="card-body">
+        @*         <h5 class="card-title">Floating labels Form</h5>
+        *@
+        <br />
+
+
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control readOnly" asp-for="Id" id="Id" readonly placeholder="Id">
+                        <label for="JobName">Id </label>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control readOnly" asp-for="UserName" id="UserName" placeholder="User Name">
+                        <label for="UserName"> User Name </label>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control readOnly" asp-for="Email" id="Email" placeholder="Email">
+                        <label for="Email"> Email  </label>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+        <a asp-controller="Users" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+    </div>
+</div>
+
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Users" asp-action="index">Users </a></li>
+        <li class="breadcrumb-item"> <a> User Details </a></li>
+
+    </ol>
+}
+
+

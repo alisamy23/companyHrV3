@@ -1,0 +1,46 @@
+﻿@model company.BL.Model.DepartmentVM
+
+
+@{
+    ViewBag.Title = "Delete Department";
+    // var x = emplo.GetAll();
+}
+<div class="card">
+    <div class="card-body">
+        @*         <h5 class="card-title">Floating labels Form</h5>
+        *@
+        <br />
+
+
+        <form class="" id="form_validation" asp-controller="Department" asp-action="Delete" method="post">
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control readOnly" asp-for="Name" id="DepartmentName" placeholder="Department Name">
+                        <label for="DepartmentName">Department Name </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary waves-effect" type="submit">Delete</button>
+            <a asp-controller="Department" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+        </form>
+    </div>
+</div>
+
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Department" asp-action="index">Department </a></li>
+        <li class="breadcrumb-item"> <a>Delete Department </a></li>
+
+    </ol>
+}

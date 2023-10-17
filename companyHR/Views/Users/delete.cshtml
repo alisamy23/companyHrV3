@@ -1,0 +1,65 @@
+﻿@model company.BL.Model.ApplicationUserVm
+@{
+    ViewBag.Title = "Delete User";
+    // var x = emplo.GetAll();
+}
+
+<div class="card">
+    <div class="card-body">
+        @*         <h5 class="card-title">Floating labels Form</h5>
+        *@
+        <br />
+
+
+        <form class="" id="form_validation" asp-controller="Users" asp-action="Delete" method="post">
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" asp-for="Id" id="Id" readonly placeholder="Id">
+                        <label for="JobName">Id </label>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" asp-for="UserName" id="UserName" placeholder="User Name">
+                        <label for="UserName"> User Name </label>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" asp-for="Email" id="Email" placeholder="Email">
+                        <label for="Email"> Email  </label>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+            <button class="btn btn-primary waves-effect" type="submit">Delete</button>
+            <a asp-controller="Delete" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+        </form>
+    </div>
+</div>
+
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Job" asp-action="index">Job </a></li>
+        <li class="breadcrumb-item"> <a>Delete User </a></li>
+
+    </ol>
+}
+
+

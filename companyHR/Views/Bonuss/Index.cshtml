@@ -1,0 +1,85 @@
+﻿    
+@model IEnumerable<company.BL.Model.BonusVM>
+@{
+    ViewBag.Title = "Bonuss";
+}
+
+<!-- Exportable Table -->
+<section class="section">
+    <div class="row justify-content-end ">
+        <div class="col-2 text-end">
+            <a class="btn btn-primary" asp-controller="Bonuss" asp-action="Create">Create</a>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable  table-striped  ">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Bonus Name</th>
+                                <th scope="col">Bonus Value</th>
+                                <th scope="col">Bonus Type</th>
+                                <th scope="col">DETAILS</th>
+                                <th scope="col">EDIT</th>
+                                <th scope="col">Delete</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td> @item.id</td>
+                                    <td>@item.bonusName</td>
+                                    <td>@item.bonusValue</td>
+                                    @{
+                                        if (item.Bonusflag == false)
+                                        {
+                                            <td> Deduction </td>
+                                        }
+                                        else
+                                        {
+                                            <td> Bonus </td>
+
+                                        }
+                                    }
+                                    <td><a asp-controller="Bonuss" asp-action="details" asp-route-id="@item.id" class="btn btn-info">Details</a></td>
+                                    <td><a asp-controller="Bonuss" asp-action="edit" asp-route-id="@item.id" class="btn btn-warning">Edit</a></td>
+                                    <td><a asp-controller="Bonuss" asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #END# Exportable Table -->
+<!-- Jquery DataTable Plugin Js -->
+ 
+@section DataTabelScripts {
+       
+
+
+}
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Bonuss" asp-action="index">Bonuss </a></li>
+    </ol>
+}
+
+
+
+

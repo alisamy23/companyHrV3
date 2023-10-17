@@ -1,0 +1,52 @@
+﻿@model company.BL.Model.jobVM
+
+
+@{
+    ViewBag.Title = "Job Details";
+    // var x = emplo.GetAll();
+}
+<div class="card">
+    <div class="card-body">
+        @*         <h5 class="card-title">Floating labels Form</h5>
+        *@
+        <br />
+
+
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input type="text" class="form-control readOnly" asp-for="jobName" id="JobName" placeholder="Job Name">
+                        <label for="JobName">Job Name </label>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input type="number" class="form-control readOnly" asp-for="salary" id="salary" placeholder="Job salary">
+                        <label for="salary"> salary </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a asp-controller="Job" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+    </div>
+</div>
+
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Job" asp-action="index">Job </a></li>
+        <li class="breadcrumb-item"> <a>Job Details</a></li>
+
+    </ol>
+}
+
+

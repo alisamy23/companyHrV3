@@ -1,0 +1,139 @@
+﻿
+@model company.BL.Model.ApplicationUserVm
+@{
+    ViewBag.Title = "User User";
+    // var x = emplo.GetAll();
+    var imageSrc = Directory.GetCurrentDirectory() + "/wwwroot/Files/UsersImages" + Model.PhotoName;
+
+}
+
+<div class="card">
+    <div class="card-body">
+        @*         <h5 class="card-title">Floating labels Form</h5>
+        *@
+        <br />
+
+
+        <form class="" id="form_validation" asp-controller="Users" enctype="multipart/form-data" asp-action="Edit" method="post">
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="row g-3">
+
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" asp-for="Id" id="Id" readonly placeholder="Id">
+                                <label for="JobName">Id </label>
+                            </div>
+                            <span asp-validation-for="Id" class="text-danger "></span>
+
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" asp-for="UserName" id="UserName" placeholder="User Name">
+                                <label for="UserName"> User Name </label>
+                            </div>
+                            <span asp-validation-for="UserName" class="text-danger "></span>
+
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" asp-for="Email" id="Email" placeholder="Email">
+                                <label for="Email"> Email  </label>
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger "></span>
+
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="file" class="form-control" id="photo" accept="image/*" onchange="loadFile(event)" asp-for="Photo" placeholder="Photo">
+                                <label for="Photo"> Photo  </label>
+                            </div>
+
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" asp-for="PhotoName" readonly id="PhotoName"  placeholder="PhotoName">
+                                <label for="PhotoName"> PhotoName  </label>
+                            </div>
+                            <span asp-validation-for="PhotoName"  class="text-danger "></span>
+
+                        </div>
+                    </div>
+                 
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img width="200" id="image" height="350" src="~/Files//UsersImages/@Model.PhotoName" />
+                        </div>
+
+
+
+                        <div class="col-12 text-center">
+                            <button onclick="removeImage()" type="button" class="btn"><i class="bi bi-trash-fill text-danger"></i></button>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <button class="btn btn-primary waves-effect" type="submit">Edit</button>
+            <a asp-controller="Users" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+        </form>
+
+    </div>
+</div>
+@section MicrosoftValidation{
+    <script>
+
+        
+        function removeImage() {
+            debugger
+
+            $("#PhotoName").val("");
+            $("#image").removeAttr('src');
+        }
+
+        function loadFile(event) {
+            debugger
+            var output = document.getElementById('image');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            $("#PhotoName").val(event.target.files[0].name);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        };
+
+          
+        
+
+    </script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+ 
+}
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Job" asp-action="index">Users </a></li>
+        <li class="breadcrumb-item"> <a>Edit User </a></li>
+
+    </ol>
+}
+
+

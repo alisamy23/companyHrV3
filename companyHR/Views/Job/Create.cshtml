@@ -1,0 +1,63 @@
+﻿                   
+@model company.BL.Model.jobVM
+
+
+@{
+    ViewBag.Title = "Add Job";
+    // var x = emplo.GetAll();
+}
+<div class="card">
+    <div class="card-body">
+@*         <h5 class="card-title">Floating labels Form</h5>
+ *@
+ <br />
+
+
+        <form class="" id="form_validation" asp-controller="Job" asp-action="create" method="post">
+                              
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" asp-for="jobName" id="JobName" placeholder="Job Name">
+                        <label for="JobName">Job Name </label>
+                    </div>
+                    <span asp-validation-for="jobName" class="text-danger "></span>
+              
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" asp-for="salary" id="salary" placeholder="Job salary">
+                        <label for="salary"> salary </label>
+                    </div>
+                    <span asp-validation-for="salary" class="text-danger "></span>
+
+                </div>             
+              
+                </div>
+                      
+                    <button class="btn btn-primary waves-effect" type="submit">Create</button>
+                    <button class="btn btn-primary waves-effect" type="reset">Cancel</button>
+            <a asp-controller="Job" asp-action="index" class="btn btn-success">Back</a>
+
+
+              
+              
+  </form>
+</div>
+</div>
+@section MicrosoftValidation{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Job" asp-action="index">Job </a></li>
+        <li class="breadcrumb-item"> <a>Add Job </a></li>
+
+    </ol>
+}
+
+

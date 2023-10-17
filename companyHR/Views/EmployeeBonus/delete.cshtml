@@ -1,0 +1,119 @@
+﻿@model company.BL.Model.EmployeeBounsVM
+@using RepositoryUsingEFinMVC.GenericRepository;
+@using company.DAL.Repository.Models;
+
+@inject IGenericRepository<bonuss> bonus;
+
+@{
+    ViewBag.Title = "Delete Employee Bonus";
+    // var x = emplo.GetAll();
+}
+<div class="card">
+    <div class="card-body">
+        @*         <h5 class="card-title">Floating labels Form</h5>
+        *@
+        <br />
+
+
+        <form class="" id="form_validation" asp-controller="EmployeeBonus" asp-action="Delete" method="post">
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating ">
+                        <select asp-for="employeeId" class="form-select readOnly" id="employeeId" aria-label="employeeId">
+                            <option value="">-- Please select Employee  --</option>
+
+                        </select>
+                        <label for="employeeId">Employee</label>
+                    </div>
+                    <span asp-validation-for="employeeId" class="text-danger "></span>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating ">
+                        <select asp-for="bonusId" class="form-select readOnly" id="bonusId" aria-label="bonusId">
+                            <option value="">-- Please select Bonus  --</option>
+                            @foreach (var item in bonus.GetAll())
+                            {
+
+                                string classColor = item.Bonusflag == false ? "text-danger" : "";
+
+                                <option class="@classColor" value="@item.id">@item.bonusName  --</option>
+
+
+                            }
+                        </select>
+                        <label for="deprtmentId">Bonus</label>
+                    </div>
+                    <span asp-validation-for="bonusId" class="text-danger "></span>
+
+                </div>
+            </div>
+
+            <button class="btn btn-primary waves-effect" type="submit">Delete</button>
+            <a asp-controller="EmployeeBonus" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+        </form>
+    </div>
+</div>
+@section MicrosoftValidation{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+
+        $(function () {
+
+            $("#employeeId").empty();
+            $("#employeeId").append("<option value='0'>Choose Employee</option>");
+            $.ajax({
+                type: "POST",
+                url: "/Employees/getAllEmployee",
+                data: {},
+                success: function (res) {
+                    console.log(res);
+                    $.each(res, function (i, e) {
+                        $("#employeeId").append("<option value='" + e.id + "'>" + e.employeeName + "</option>");
+                    });
+                    $("#employeeId").val(@Model.employeeId);
+
+                }
+            });
+
+
+            $("#bonusId").empty();
+            $("#bonusId").append("<option value='0'>Choose Bonus</option>");
+            $.ajax({
+                type: "POST",
+                url: "/Bonuss/getAllbonuses",
+                data: {},
+                success: function (res) {
+                    console.log(res);
+                    $.each(res, function (i, e) {
+                        $("#bonusId").append("<option value='" + e.id + "'>" + e.bonusName + "</option>");
+                    });
+                    $("#bonusId").val(@Model.bonusId);
+
+                }
+            });
+        });
+    </script>
+}
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="EmployeeBonus" asp-action="index">Employee Bonus </a></li>
+        <li class="breadcrumb-item"> <a>Delete Employee Bonuss </a></li>
+
+    </ol>
+}
+
+
+
+
+
+

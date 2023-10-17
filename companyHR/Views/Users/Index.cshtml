@@ -1,0 +1,72 @@
+﻿ @model IEnumerable<company.BL.Model.ApplicationUserVm>
+@{
+    ViewBag.Title = "Users";
+}
+
+<!-- Exportable Table -->
+<section class="section">
+    <div class="row justify-content-end ">
+      
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable  table-striped  ">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Photo</th>
+                                <th scope="col">DETAILS</th>
+                                <th scope="col">EDIT</th>
+                                <th scope="col">DELETE</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.UserName</td>
+                                    <td>
+@*                                         <img src="~/Files/UsersImages/@PhotoName" alt="Profile" class="rounded-circle">
+ *@
+                                        <img src="~/Files/UsersImages/@item.PhotoName" class="rounded-circle" height="50" width="50" />
+                                    </td>
+                                    <td><a asp-controller="users" asp-action="details" asp-route-id="@item.Id" class="btn btn-info">Details</a></td>
+                                    <td><a asp-controller="users" asp-action="edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a></td>
+                                    <td><a asp-controller="users" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #END# Exportable Table -->
+<!-- Jquery DataTable Plugin Js -->
+ 
+@section DataTabelScripts {
+       
+
+
+}
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="users" asp-action="index">users </a></li>
+    </ol>
+}
+
+
+
+

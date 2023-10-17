@@ -1,0 +1,79 @@
+﻿@model company.BL.Model.BonusVM
+
+
+@{
+    ViewBag.Title = "Edit Bonuss";
+    // var x = emplo.GetAll();
+}
+<div class="card">
+    <div class="card-body">
+        @*         <h5 class="card-title">Floating labels Form</h5>
+        *@
+        <br />
+
+
+        <form class="" id="form_validation" asp-controller="Bonuss" asp-action="Edit" method="post">
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" asp-for="bonusName" id="BonusName" placeholder="Bonus Name">
+                        <label for="BonusName">Bonus Name </label>
+                    </div>
+                    <span asp-validation-for="bonusName" class="text-danger "></span>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="number" class="form-control" asp-for="bonusValue" id="BonusValue" placeholder="Bonus Value">
+                        <label for="BonusValue">Bonus value </label>
+                    </div>
+                    <span asp-validation-for="bonusValue" class="text-danger "></span>
+
+                </div>
+
+
+                <div class="col-md-12  mb-3">
+                    <div class="form-control">
+                        <div class="row   ">
+                            <label class="">Deduction/bonus</label>
+                            <div class="col-4">
+                                <input type="radio" value="false" asp-for="Bonusflag" id="Deduction" class=" form-check-input ">
+                                <label for="Deduction">Deduction</label>
+                            </div>
+
+                            <div class="col-4">
+                                <input type="radio" value="true" asp-for="Bonusflag" id="bonus"  class=" form-check-input ">
+                                <label for="bonus" class="m-l-20">Bonus</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary waves-effect" type="submit">Edit</button>
+            <a asp-controller="Bonuss" asp-action="index" class="btn btn-success">Back</a>
+
+
+
+
+        </form>
+    </div>
+</div>
+@section MicrosoftValidation{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+@section PageTitle {
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+        <li class="breadcrumb-item"> <a asp-controller="Bonuss" asp-action="index">Bonuss </a></li>
+        <li class="breadcrumb-item"> <a>Edit Bonuss </a></li>
+
+    </ol>
+}
+
+
